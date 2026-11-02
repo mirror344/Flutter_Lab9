@@ -1,17 +1,20 @@
-# slot_machine_dudakov
+# Лабораторная работа №9. Flutter: StatefulWidget и управление состоянием
+Дудаков Иван\
+ИСП-241\
+02.11.2026
 
-A new Flutter project.
+## Было изучено
+1. Картинки во Flutter нужно регистрировать в pubspec.yaml
+2. `static const` костаната класса, она одна на все объекты и известна при компиляции. Опечатку в имени костанты компилятор покажет сразу, а в пути к файлу только при запуске
+3. `AnimatedOpacity` плавно уменьшает непрозрачность
+4. `AnimatedSwitcher` анимирует замену дочернего виджета
+5. `FittedBox` c `BoxFit.scaleDown` уменшает ширину ряда на узком экране
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+![Финальное приложение](img/step5_Dudakov.png)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Инструкция по запуску
+1. Клонировать репозиторий `git clone https://github.com/mirror344/Flutter_Lab9`
+2. Перейти в папку репозитория `cd Flutter_Lab9`
+3. Подключить пакеты `flutter pub get`
+4. Запустить в Chrome `flutter run -d chrome`
