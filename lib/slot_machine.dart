@@ -22,6 +22,12 @@ class _SlotMachineState extends State<SlotMachine> {
   var _message = '';
 
   void _spin() {
+    if (_coins <= 0) {
+      setState(() {
+        _message = 'Монеты закончились! 😢';
+      });
+      return;
+    }
     setState(() {
       _slot1 = _symbols[_random.nextInt(_symbols.length)];
       _slot2 = _symbols[_random.nextInt(_symbols.length)];
@@ -32,8 +38,20 @@ class _SlotMachineState extends State<SlotMachine> {
         _message = 'Победа! 🎉 +3 монеты';
       } else {
         _coins -= 1;
-        _message = 'Попробуй еще раз 😔 -1 монета';
+        _message = _coins == 0 
+          ? 'Монеты закончились 😢'
+          : 'Попробуй еще раз 😔 -1 монета';
       }
+    });
+  }
+
+  void _reset() {
+    setState(() {
+      _coins = 10;
+      _slot1 = _cherry;
+      _slot2 = _lemon;
+      _slot3 = _seven;
+      _message = '';
     });
   }
 
@@ -77,7 +95,7 @@ class _SlotMachineState extends State<SlotMachine> {
           ),
           const SizedBox(height: 40,),
           ElevatedButton(
-            onPressed: _spin, 
+            onPressed: _coins > 0 ? _spin : null, 
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.amber,
               padding: const EdgeInsets.symmetric(
@@ -92,6 +110,17 @@ class _SlotMachineState extends State<SlotMachine> {
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
+            ),
+          ),
+          const SizedBox(height: 12,),
+          TextButton(
+            onPressed: _reset, 
+            child: const Text(
+              'Начать заново',
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 16,
+              )
             ),
           ),
         ],
